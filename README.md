@@ -25,7 +25,9 @@ globewise/
 │   ├── globewise_live.py  Extra /api/* endpoints
 │   └── requirements.txt
 ├── frontend/           React + Vite dashboard
+├── docker/             Dockerfiles, nginx config and Docker Compose
 ├── docs/               Project notes
+├── postman/            Postman collection for the API
 └── start-dev.ps1       Starts backend and frontend together (Windows)
 ```
 
@@ -65,6 +67,14 @@ After the one-time setup above:
 .\start-dev.ps1
 ```
 
+### Run with Docker
+
+```bash
+docker compose -f docker/docker-compose.yml up --build
+```
+
+Then open http://localhost:8080. More in [docs/deployment-notes.md](docs/deployment-notes.md).
+
 ## API endpoints
 
 | Method | Path | Description |
@@ -77,6 +87,8 @@ After the one-time setup above:
 | GET | `/api/v1/currency/convert?amount=10&from_currency=INR&to_currency=USD` | Currency conversion |
 | GET | `/api/v1/country-info/?country=Japan` | Country facts |
 | GET | `/api/analyze?city=Tokyo` | Combined city analysis |
+
+The full list is in [docs/api-list.md](docs/api-list.md), and [postman/globewise-api-collection.json](postman/globewise-api-collection.json) can be imported into Postman.
 
 ## Configuration
 

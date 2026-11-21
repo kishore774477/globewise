@@ -1,0 +1,225 @@
+{
+  "info": {
+    "name": "GlobeWise API",
+    "description": "Requests for the GlobeWise FastAPI backend. Start the backend first (see README).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "health"
+          ],
+          "query": []
+        }
+      }
+    },
+    {
+      "name": "Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/dashboard/?city=Tokyo",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "dashboard",
+            ""
+          ],
+          "query": [
+            {
+              "key": "city",
+              "value": "Tokyo"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Location search",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/locations/search?query=Paris",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "locations",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "query",
+              "value": "Paris"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Weather",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/weather/?latitude=35.6895&longitude=139.6917",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "weather",
+            ""
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "35.6895"
+            },
+            {
+              "key": "longitude",
+              "value": "139.6917"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Nearby earthquakes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/safety/earthquakes?latitude=35.6895&longitude=139.6917&radius_km=800",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "safety",
+            "earthquakes"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "35.6895"
+            },
+            {
+              "key": "longitude",
+              "value": "139.6917"
+            },
+            {
+              "key": "radius_km",
+              "value": "800"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Currency convert",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/currency/convert?amount=10&from_currency=INR&to_currency=USD",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "currency",
+            "convert"
+          ],
+          "query": [
+            {
+              "key": "amount",
+              "value": "10"
+            },
+            {
+              "key": "from_currency",
+              "value": "INR"
+            },
+            {
+              "key": "to_currency",
+              "value": "USD"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Country info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/country-info/?country=Japan",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "country-info",
+            ""
+          ],
+          "query": [
+            {
+              "key": "country",
+              "value": "Japan"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "City analysis",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/analyze?city=Tokyo",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "analyze"
+          ],
+          "query": [
+            {
+              "key": "city",
+              "value": "Tokyo"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    }
+  ]
+}
