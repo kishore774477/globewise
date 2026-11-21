@@ -1,0 +1,604 @@
+﻿* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.28), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.24), transparent 34%),
+    #040b16;
+  color: #e5eefb;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 26px;
+  border-right: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(2, 6, 23, 0.72);
+  backdrop-filter: blur(20px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #38bdf8, #22c55e);
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.2);
+}
+
+.brand strong,
+.brand span {
+  display: block;
+}
+
+.brand strong {
+  font-size: 18px;
+}
+
+.brand span {
+  color: #8ea2bd;
+  font-size: 13px;
+}
+
+.sidebar nav {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar nav a {
+  color: #93a4bd;
+  text-decoration: none;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+}
+
+.sidebar nav a.active,
+.sidebar nav a:hover {
+  color: #e5eefb;
+  background: rgba(56, 189, 248, 0.13);
+}
+
+.sidebar-footer {
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 26px;
+  padding: 18px;
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  border-radius: 20px;
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.sidebar-footer p {
+  margin: 0 0 6px;
+  color: #86efac;
+}
+
+.sidebar-footer strong {
+  color: #dcfce7;
+}
+
+.main-content {
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 60px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.eyebrow,
+.card-label {
+  margin: 0;
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.topbar h1 {
+  margin: 8px 0 0;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.05em;
+}
+
+.refresh-button,
+.search-box button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #031525;
+  font-weight: 900;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #38bdf8, #22c55e);
+}
+
+.hero-panel,
+.metric-card,
+.large-panel,
+.side-panel,
+.forecast-panel,
+.earthquake-panel {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+
+.hero-panel {
+  padding: 34px;
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.status-pill {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #bae6fd;
+  background: rgba(14, 165, 233, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.hero-panel h2 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(34px, 5vw, 68px);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+.search-box {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 760px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(2, 6, 23, 0.74);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.search-box svg {
+  margin-left: 10px;
+  color: #7dd3fc;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #e5eefb;
+  padding: 13px 4px;
+}
+
+.city-card {
+  border-radius: 26px;
+  padding: 28px;
+  background:
+    linear-gradient(145deg, rgba(56, 189, 248, 0.16), rgba(34, 197, 94, 0.09)),
+    rgba(2, 6, 23, 0.48);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.city-card svg {
+  color: #7dd3fc;
+}
+
+.city-card h3 {
+  margin: 18px 0 8px;
+  font-size: 36px;
+  letter-spacing: -0.05em;
+}
+
+.city-card p,
+.city-card span,
+.muted {
+  color: #a9b8ce;
+}
+
+.metric-grid,
+.content-grid {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.metric-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.content-grid {
+  grid-template-columns: 1.45fr 0.9fr;
+}
+
+.metric-card,
+.large-panel,
+.side-panel,
+.forecast-panel,
+.earthquake-panel {
+  padding: 26px;
+}
+
+.card-top,
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.panel-heading {
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.card-top span {
+  color: #93a4bd;
+  font-size: 13px;
+}
+
+.metric-card h3,
+.large-panel h3,
+.side-panel h3,
+.forecast-panel h3,
+.earthquake-panel h3 {
+  margin: 10px 0 8px;
+  font-size: 30px;
+  letter-spacing: -0.04em;
+}
+
+.metric-card p,
+.metric-card small,
+.ai-text {
+  color: #a9b8ce;
+  line-height: 1.65;
+}
+
+.icon-box {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  flex: 0 0 auto;
+}
+
+.weather {
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+}
+
+.safety {
+  background: rgba(34, 197, 94, 0.16);
+  color: #86efac;
+}
+
+.currency {
+  background: rgba(245, 158, 11, 0.16);
+  color: #fcd34d;
+}
+
+.ai {
+  background: rgba(168, 85, 247, 0.16);
+  color: #d8b4fe;
+}
+
+.country {
+  background: rgba(20, 184, 166, 0.16);
+  color: #5eead4;
+}
+
+.quake {
+  background: rgba(248, 113, 113, 0.16);
+  color: #fca5a5;
+}
+
+.risk-bar {
+  height: 10px;
+  margin: 20px 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.risk-bar div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #22c55e, #facc15, #ef4444);
+}
+
+.mini-stats {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.mini-stats div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a9b8ce;
+  font-size: 14px;
+}
+
+.advice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.advice-grid div {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.advice-grid strong,
+.advice-grid span {
+  display: block;
+}
+
+.advice-grid strong {
+  margin: 10px 0 4px;
+}
+
+.advice-grid span {
+  color: #a9b8ce;
+  font-size: 14px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.info-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.info-list span,
+.info-list strong {
+  display: block;
+}
+
+.info-list span {
+  color: #93a4bd;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.forecast-panel,
+.earthquake-panel {
+  margin-top: 18px;
+}
+
+.forecast-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.forecast-day {
+  padding: 18px 14px;
+  border-radius: 20px;
+  background: rgba(2, 6, 23, 0.42);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  text-align: center;
+}
+
+.forecast-day span,
+.forecast-day strong,
+.forecast-day small,
+.forecast-day em {
+  display: block;
+}
+
+.forecast-day span {
+  color: #93a4bd;
+}
+
+.forecast-day strong {
+  margin: 10px 0;
+  font-size: 28px;
+}
+
+.forecast-day small,
+.forecast-day em {
+  color: #a9b8ce;
+  font-style: normal;
+  font-size: 13px;
+}
+
+.quake-items {
+  display: grid;
+  gap: 10px;
+}
+
+.quake-items a {
+  text-decoration: none;
+  color: #e5eefb;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(2, 6, 23, 0.38);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.quake-items span {
+  color: #a9b8ce;
+}
+
+.inline-error {
+  margin-top: 14px;
+  color: #fecaca;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .dashboard-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .hero-panel,
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid,
+  .forecast-row,
+  .advice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .refresh-button {
+    width: 100%;
+  }
+}
+
+
+/* Sidebar working buttons */
+.sidebar nav button {
+  width: 100%;
+  text-align: left;
+  color: #93a4bd;
+  background: transparent;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar nav button:first-child,
+.sidebar nav button:hover {
+  color: #e5eefb;
+  background: rgba(56, 189, 248, 0.13);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Fixed sidebar navigation buttons */
+.sidebar nav button {
+  width: 100%;
+  text-align: left;
+  color: #93a4bd;
+  background: transparent;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-weight: 800;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.sidebar nav button.active,
+.sidebar nav button:hover {
+  color: #e5eefb;
+  background: rgba(56, 189, 248, 0.13);
+  border-color: rgba(56, 189, 248, 0.18);
+}
+
+.sidebar nav button:focus-visible {
+  border-color: rgba(56, 189, 248, 0.55);
+}
+
+#dashboard,
+#weather,
+#safety,
+#currency,
+#country,
+#ai-guide {
+  scroll-margin-top: 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}

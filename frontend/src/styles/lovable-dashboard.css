@@ -1,0 +1,462 @@
+/* ======================================================
+   GlobeWise Lovable Dashboard UI
+   Safe visual upgrade only
+====================================================== */
+
+:root {
+  --gw-bg-main: #050816;
+  --gw-bg-panel: rgba(15, 23, 42, 0.82);
+  --gw-bg-card: rgba(15, 23, 42, 0.72);
+  --gw-bg-card-hover: rgba(30, 41, 59, 0.88);
+
+  --gw-border: rgba(148, 163, 184, 0.18);
+  --gw-border-active: rgba(56, 189, 248, 0.45);
+
+  --gw-text-main: #f8fafc;
+  --gw-text-soft: #cbd5e1;
+  --gw-text-muted: #94a3b8;
+
+  --gw-blue: #38bdf8;
+  --gw-cyan: #22d3ee;
+  --gw-green: #34d399;
+  --gw-yellow: #fbbf24;
+  --gw-red: #fb7185;
+
+  --gw-radius-xl: 28px;
+  --gw-radius-lg: 22px;
+  --gw-radius-md: 16px;
+
+  --gw-shadow-soft: 0 20px 70px rgba(0, 0, 0, 0.35);
+  --gw-shadow-card: 0 16px 45px rgba(0, 0, 0, 0.22);
+}
+
+/* Page background */
+body {
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.13), transparent 34%),
+    radial-gradient(circle at top right, rgba(52, 211, 153, 0.09), transparent 32%),
+    linear-gradient(135deg, #020617 0%, #050816 52%, #020617 100%);
+  color: var(--gw-text-main);
+}
+
+/* Smooth page scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Main layout safety */
+.dashboard-section,
+section {
+  scroll-margin-top: 28px;
+}
+
+/* Sidebar upgrade */
+.sidebar,
+aside {
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.98)) !important;
+  border-right: 1px solid var(--gw-border);
+  box-shadow: var(--gw-shadow-soft);
+}
+
+.sidebar nav,
+.sidebar-nav,
+aside nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sidebar a,
+.sidebar button,
+.sidebar-link,
+aside a,
+aside button {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: var(--gw-text-soft);
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border 0.2s ease,
+    color 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar button:hover,
+.sidebar-link:hover,
+aside a:hover,
+aside button:hover {
+  transform: translateX(4px);
+  color: var(--gw-text-main);
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.sidebar a.active,
+.sidebar button.active,
+.sidebar-link.active,
+aside a.active,
+aside button.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(34, 211, 238, 0.12));
+  border-color: var(--gw-border-active);
+}
+
+/* Logo / brand card */
+.logo,
+.brand,
+.sidebar-brand {
+  border-radius: 20px;
+}
+
+.logo img,
+.brand img,
+.sidebar-brand img {
+  box-shadow: 0 12px 40px rgba(34, 211, 238, 0.26);
+}
+
+/* Hero section */
+.hero,
+.dashboard-hero,
+#dashboard {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gw-radius-xl);
+  border: 1px solid var(--gw-border);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.72)),
+    radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.18), transparent 32%);
+  box-shadow: var(--gw-shadow-soft);
+}
+
+.hero::before,
+.dashboard-hero::before,
+#dashboard::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.13), transparent 26%),
+    radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.1), transparent 28%);
+}
+
+.hero h1,
+.dashboard-hero h1,
+#dashboard h1 {
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+/* Search bar */
+input,
+.search-input {
+  border: 1px solid rgba(148, 163, 184, 0.18) !important;
+  background: rgba(2, 6, 23, 0.72) !important;
+  color: var(--gw-text-main) !important;
+  border-radius: 18px !important;
+  outline: none !important;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+input:focus,
+.search-input:focus {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.13) !important;
+  background: rgba(2, 6, 23, 0.92) !important;
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+/* Buttons */
+button,
+.primary-button,
+.analyze-button {
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover,
+.primary-button:hover,
+.analyze-button:hover {
+  transform: translateY(-2px);
+}
+
+button:active,
+.primary-button:active,
+.analyze-button:active {
+  transform: translateY(0);
+}
+
+/* Analyze / main CTA button */
+.analyze-button,
+button[type="submit"],
+button.primary {
+  background: linear-gradient(135deg, #22d3ee, #34d399) !important;
+  color: #020617 !important;
+  font-weight: 900 !important;
+  box-shadow: 0 18px 35px rgba(34, 211, 238, 0.23);
+}
+
+/* Cards */
+.card,
+.stat-card,
+.info-card,
+.weather-card,
+.safety-card,
+.currency-card,
+.country-card,
+.ai-card,
+section > div {
+  border-radius: var(--gw-radius-lg);
+}
+
+/* Only apply modern card look to direct dashboard cards */
+.card,
+.stat-card,
+.info-card,
+.weather-card,
+.safety-card,
+.currency-card,
+.country-card,
+.ai-card {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.62)) !important;
+  border: 1px solid var(--gw-border) !important;
+  box-shadow: var(--gw-shadow-card);
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.card:hover,
+.stat-card:hover,
+.info-card:hover,
+.weather-card:hover,
+.safety-card:hover,
+.currency-card:hover,
+.country-card:hover,
+.ai-card:hover {
+  transform: translateY(-6px);
+  background: var(--gw-bg-card-hover) !important;
+  border-color: rgba(56, 189, 248, 0.36) !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+}
+
+.card::after,
+.stat-card::after,
+.info-card::after,
+.weather-card::after,
+.safety-card::after,
+.currency-card::after,
+.country-card::after,
+.ai-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.07), transparent 28%);
+}
+
+/* Section headings */
+section h2,
+.dashboard-section h2 {
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+
+section p,
+.dashboard-section p {
+  color: var(--gw-text-soft);
+}
+
+/* Small labels */
+.label,
+.card-label,
+.stat-label,
+.uppercase {
+  color: var(--gw-text-muted) !important;
+  letter-spacing: 0.16em;
+  font-weight: 900;
+}
+
+/* Weather / safety / currency value text */
+.card h3,
+.stat-card h3,
+.info-card h3,
+.weather-card h3,
+.safety-card h3,
+.currency-card h3,
+.country-card h3 {
+  color: var(--gw-text-main);
+  letter-spacing: -0.035em;
+}
+
+/* Progress bar */
+progress,
+.progress,
+.risk-bar {
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.progress > div,
+.risk-bar > div {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #34d399, #fbbf24, #fb7185);
+}
+
+/* Country Intelligence */
+#country {
+  border-radius: var(--gw-radius-xl);
+}
+
+#country .country-card {
+  background:
+    linear-gradient(135deg, rgba(8, 47, 73, 0.72), rgba(15, 23, 42, 0.78)) !important;
+}
+
+/* AI Guide section */
+#ai-guide {
+  border-radius: var(--gw-radius-xl);
+}
+
+#ai-guide .card,
+#ai-guide .ai-card {
+  background:
+    linear-gradient(135deg, rgba(30, 41, 59, 0.82), rgba(8, 47, 73, 0.62)) !important;
+}
+
+/* Live status */
+.live-status,
+.api-status,
+.connected-card {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(52, 211, 153, 0.25) !important;
+  color: #d1fae5 !important;
+  border-radius: 18px;
+}
+
+/* Loading state */
+.loading,
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.loading::after,
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+  animation: gw-shimmer 1.35s infinite;
+}
+
+@keyframes gw-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Nice scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.55);
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .sidebar,
+  aside {
+    position: relative !important;
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .sidebar nav,
+  .sidebar-nav,
+  aside nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .sidebar a,
+  .sidebar button,
+  .sidebar-link,
+  aside a,
+  aside button {
+    white-space: nowrap;
+  }
+
+  .hero h1,
+  .dashboard-hero h1,
+  #dashboard h1 {
+    font-size: clamp(42px, 10vw, 64px);
+  }
+}
+
+@media (max-width: 640px) {
+  .card,
+  .stat-card,
+  .info-card,
+  .weather-card,
+  .safety-card,
+  .currency-card,
+  .country-card,
+  .ai-card {
+    border-radius: 18px;
+  }
+
+  section h2,
+  .dashboard-section h2 {
+    font-size: 28px;
+  }
+
+  input,
+  button {
+    font-size: 15px;
+  }
+}
